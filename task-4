@@ -1,0 +1,35 @@
+import random
+
+def play():
+    user = input("Enter your choice (rock, paper, scissors): ").lower()
+    computer = random.choice(["rock", "paper", "scissors"])
+    
+    print(f"\nYou chose: {user}")
+    print(f"Computer chose: {computer}")
+
+    if user == computer:
+        return "It's a tie!"
+    
+    if win(user, computer):
+        return "You win!"
+    else:
+        return "You lose!"
+
+def win(player, opponent):
+    # return True if player wins against opponent
+    # Rock beats Scissors, Scissors beats Paper, Paper beats Rock
+    if (player == "rock" and opponent == "scissors") or \
+       (player == "scissors" and opponent == "paper") or \
+       (player == "paper" and opponent == "rock"):
+        return True
+    return False
+
+# Main loop
+while True:
+    result = play()
+    print(result)
+    
+    again = input("\nDo you want to play again? (yes/no): ").lower()
+    if again != "yes":
+        print("Thanks for playing! Goodbye!")
+        break
